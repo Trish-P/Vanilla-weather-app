@@ -17,8 +17,10 @@
   </head>
   <body>
     <div class="container">
-        <div class = "weather-app">
-
+        <div class="weather-app-wrapper">
+        <div class="weather-app">
+        <div class="overview">
+  
       <h1>Tulsa
 
         </h1>
@@ -31,10 +33,17 @@
     </li>
         
       </ul>
+      </div>
     <div class="row">
     <div class="col-6">
-     <img src="https://ssl.gstatic.com/onebox/weather/64/sunny.png" alt="Sunny">
-        12°C | °F
+   <div class="d-flex weather-temperature">
+  <img src="" alt="Clear" id="icon">
+  <div>
+    <strong id="temperature"></strong>
+    <span class="units"> <strong>12</strong>°C | °F</span> 
+     <img src="https://ssl.gstatic.com/onebox/weather/64/sunny.png" alt="Clear">
+
+    </div>
     </div>
     <div class="col-6">
         <ul>
@@ -49,11 +58,13 @@
         </li>
         </ul>
     </div>
-    <small>
+    </div>
+    </div>
+    </div>
+    </div>
+     <small>
        <a href="https://github.com/Trish-P/weather-app"> Open-source</a> by Trishna Patel
     </small>
-    </div>
-    </div>
     <script src="app.js"></script>
   </body>
 </html>
