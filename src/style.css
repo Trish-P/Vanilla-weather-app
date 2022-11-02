@@ -18,11 +18,17 @@ body {
   margin-bottom: 20px;
 }
 
-.weather-temperature img {
+.weather-temperature strong {
   color: rgb(33, 33, 33);
   font-size: 64px;
   line-height: 64px;
   font-weight: 400;
+}
+
+.weather-temperature img {
+  margin-right: 10px;
+  height: 64px;
+  width: 64px;
 }
 h1 {
   color: rgb(32, 33, 36);
