@@ -26,10 +26,17 @@ body {
 }
 
 .weather-temperature img {
-  margin-right: 10px;
+  margin-right: 5px;
   height: 64px;
   width: 64px;
 }
+
+.weather-temperature.units {
+  position: relative;
+  font-size: 16px;
+  top: -34px;
+}
+
 h1 {
   color: rgb(32, 33, 36);
   display: block;
