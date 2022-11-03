@@ -40,10 +40,22 @@ function displayTemperature(response) {
     "src",
     `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png`
   );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
-let apiKey = "f1a03t171ee4df4ba7f964ba18abo4b3";
-let city = "Tulsa";
-let apiUrl = `https://api.shecodes.io/weather/v1/current?=${city}&appid=${apiKey}&units=metric`;
+function search(city) {
+  let apiKey = "f1a03t171ee4df4ba7f964ba18abo4b3";
+  let city = "Tulsa";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?=${city}&appid=${apiKey}&units=metric`;
+  axios.get(url).then(displayTemperature);
+}
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+}
 
-axios.get(url).then(displayTemperature);
+search("Tulsa");
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
