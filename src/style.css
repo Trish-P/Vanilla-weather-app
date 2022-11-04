@@ -37,6 +37,23 @@ body {
   top: -34px;
 }
 
+.weather-forecast {
+  margin: top 20px;
+  text-align: center;
+}
+
+.weather-forecast-date {
+  font-size: 16px;
+  opacity: 0.5;
+}
+
+.weather-forecast-temperature-min {
+  opacity: 0.5;
+}
+
+.weather-forecast-temperature {
+  font-size: 13px;
+}
 h1 {
   color: rgb(32, 33, 36);
   display: block;

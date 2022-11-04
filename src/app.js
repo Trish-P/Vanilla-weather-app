@@ -63,10 +63,12 @@ function displayFahrenheitTemperature(event) {
   temperatureElement.innerHTML = Math.round(FahrenheitTemperature);
 }
 
-search("Tulsa");
+let celciusTemperature = null;
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+search("Tulsa");
