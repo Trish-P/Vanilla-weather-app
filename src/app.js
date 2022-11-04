@@ -41,7 +41,7 @@ function displayTemperature(response) {
   iconElement.setAttribute("alt", response.data.condition.description);
   iconElement.setAttribute(
     "src",
-    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png`
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
