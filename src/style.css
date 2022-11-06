@@ -64,6 +64,9 @@ h1 {
   text-align: left;
   margin-bottom: 0;
 }
+small {
+  text-align: centre;
+}
 
 ul {
   margin: 0;

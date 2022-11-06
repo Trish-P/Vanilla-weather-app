@@ -21,6 +21,49 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed"];
+  days.forEach(function (day) {
+
+  forecastElement.innerHTML =
+    forecastHTML +
+    `
+    <div class="col-2">
+      <div class="weather-forecast-date">${day}</div>
+      <img
+        src="http://openweathermap.org/img/wn/10d@2x.png"
+        alt=""
+        width="36"
+      />
+      <div class="weather-forecast-temperature">
+        <span class="weather-forecast-temperature-max">18</span>
+        <span class="weather-forecast-temperature-min">12</span>
+    </div>
+  </div>`;
+});
+
+forecastHTML =
+  forecastHTML +
+  `
+    <div class="col-2">
+      <div class="weather-forecast-date">Fri</div>
+      <img
+        src="http://openweathermap.org/img/wn/10d@2x.png"
+        alt=""
+        width="36"
+      />
+      <div class="weather-forecast-temperature">
+        <span class="weather-forecast-temperature-max">18</span>
+        <span class="weather-forecast-temperature-min">12</span>
+      </div>
+    </div>
+  </div>`;
+forecastHTML = `</div>`;
+forecastElement.innerHTML = forecastHTML;
+
 function displayTemperature(response) {
   console.log(response.data);
   let temperatureElement = document.querySelector("#temperature");
@@ -30,6 +73,8 @@ function displayTemperature(response) {
   let windElement = document.querySelector("#wind");
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
+
+  celsiusTemperature = response.data.main.temp;
 
   temperatureElement.innerHTML = Math.round(response.data.temperature.current);
   cityElement.innerHTML = response.data.city;
@@ -63,7 +108,7 @@ function displayFahrenheitTemperature(event) {
   temperatureElement.innerHTML = Math.round(FahrenheitTemperature);
 }
 
-let celciusTemperature = null;
+let celsiusTemperature = null;
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
@@ -71,4 +116,8 @@ form.addEventListener("submit", handleSubmit);
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
+
 search("Tulsa");
+displayForecast();
