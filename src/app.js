@@ -21,16 +21,16 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
   let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed"];
   days.forEach(function (day) {
-
-  forecastElement.innerHTML =
-    forecastHTML +
-    `
+    forecastElement.innerHTML =
+      forecastHTML +
+      `
     <div class="col-2">
       <div class="weather-forecast-date">${day}</div>
       <img
@@ -43,7 +43,8 @@ function displayForecast() {
         <span class="weather-forecast-temperature-min">12</span>
     </div>
   </div>`;
-});
+  });
+}
 
 forecastHTML =
   forecastHTML +
@@ -63,6 +64,14 @@ forecastHTML =
   </div>`;
 forecastHTML = `</div>`;
 forecastElement.innerHTML = forecastHTML;
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "2bd326a60dc89a53287e446e819664df";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${coordinates.lat}&lat={coordinates.lon}&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
 
 function displayTemperature(response) {
   console.log(response.data);
@@ -89,6 +98,8 @@ function displayTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
 }
 
 function search(city) {
