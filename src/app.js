@@ -22,39 +22,41 @@ function formatDate(timestamp) {
 }
 
 function displayForecast(response) {
+  let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-  days.forEach(function (forecastDay, index) {
-    if (index <6){
-    forecastHTML =
-      forecastHTML +
-      `
-    <div class="col-2">
-      <div class="weather-forecast-date">${formatDay(
-        forecastDay.dt
-      )}</div>${index}
-      <img
-        src="http://openweathermap.org/img/wn/${
-          forecastDay.weather[0].icon
-        }@2x.png"
-        alt=""
-        width="42"
-      />
-      <div class="weather-forecast-temperature">
-        <span class="weather-forecast-temperature-max"> ${Math.round(
-          forecastDay.temp.max
-        )}°</span>
-        <span class="weather-forecast-temperature-min"> ${Math.round(
-          forecastDay.temp.max
-        )}°</span>
-    </div>
-  </div>`;
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
+      <div class="col-2">
+        <div class="weather-forecast-date">${formatDay(forecastDay.dt)}</div>
+        <img
+          src="http://openweathermap.org/img/wn/${
+            forecastDay.weather[0].icon
+          }@2x.png"
+          alt=""
+          width="42"
+        />
+        <div class="weather-forecast-temperatures">
+          <span class="weather-forecast-temperature-max"> ${Math.round(
+            forecastDay.temp.max
+          )}° </span>
+          <span class="weather-forecast-temperature-min"> ${Math.round(
+            forecastDay.temp.min
+          )}° </span>
+        </div>
+      </div>
+  `;
+    }
   });
-}
+
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
+}
 
 function getForecast(coordinates) {
   let apiKey = "fbef01f4et1b02o0d25c27210a43ef3f";
@@ -87,7 +89,7 @@ function displayTemperature(response) {
 }
 
 function search(city) {
-  let apiKey = "f1a03t171ee4df4ba7f964ba18abo4b3";
+  let apiKey = "b47fdf6445cd8b64ab889be77dbe56d4";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemperature);
 }
@@ -122,4 +124,4 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 search("Tulsa");
-displayForecast();
+// displayForecast();
