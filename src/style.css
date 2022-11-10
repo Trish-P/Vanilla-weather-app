@@ -21,7 +21,7 @@ body {
 .weather-temperature strong {
   color: rgb(33, 33, 33);
   font-size: 64px;
-  line-height: 64px;
+  line-height: 1px;
   font-weight: 400;
 }
 
@@ -40,6 +40,7 @@ body {
 .weather-forecast {
   margin: top 20px;
   text-align: center;
+  color: #000;
 }
 
 .weather-forecast-date {
@@ -81,8 +82,4 @@ li {
 }
 li:first-letter {
   text-transform: capitalize;
-}
-.name {
-  text-align: center;
-  position: relative;
 }
