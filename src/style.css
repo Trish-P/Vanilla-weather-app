@@ -20,14 +20,14 @@ body {
 
 .weather-temperature strong {
   color: rgb(33, 33, 33);
-  font-size: 64px;
+  font-size: 50px;
   line-height: 1px;
   font-weight: 400;
 }
 
 .weather-temperature img {
   margin-right: 5px;
-  height: 64px;
+  height: 60px;
   width: 64px;
 }
 
@@ -82,4 +82,7 @@ li {
 }
 li:first-letter {
   text-transform: capitalize;
+}
+footer {
+  text-align: center;
 }
